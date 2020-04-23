@@ -15,7 +15,7 @@ function validateForm() {
   }
 
   if (password == "") {
-    alert("Password errata");
+    alert("Inserisci la password");
     return false;
   } else {
     http(password);

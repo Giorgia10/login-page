@@ -41,6 +41,14 @@ body{
   width: 100%;
 }
 
+.access-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .image {
   background-color:#dddddd;
   display: flex;

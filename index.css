@@ -85,3 +85,22 @@ body{
 .form-button:hover{
   background: #dddddd;
 }
+
+.esc-button{
+  border: 1px solid #ddd;
+  color: black;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.esc-button:hover{
+  background: #dddddd;
+}
+
+.homepage {
+  width: 350px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 2rem;
+}

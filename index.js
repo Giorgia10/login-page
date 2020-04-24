@@ -32,7 +32,7 @@ function signIn() {
   });
 }
 
-//Function that verify the token at the very first loading of the page
+//Function that verifies the token at the very first loading of the page
 function verifyToken() {
   var token = localStorage.getItem("token");
   var email = localStorage.getItem("email");

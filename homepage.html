@@ -4,24 +4,20 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="index.css"> 
 </head>
-<body>
+<body onload="verifyToken()">
     <div class="wrapper">
         <div class="hompage">
             <div class="access-img">
                 <div class="image">
                     <div class="picture">
-                        <img src="bear.svg" alt="">
+                        <img src="assets/bear.svg" alt="">
                     </div>
                 </div>
             </div>
-            <h3>Welcome</h3>
-            <!--Email Input-->
-            <div class="form-group">
-                <lable>Email</lable>
-            </div>
+            <h3>Welcome back, <label id="email"></label></h3>
             <!--Password Input-->
             <div class="form-group">
-                <lable>Password</lable>
+                Your token is: <label id="token"></label>
             </div>
             <!--Login Button-->
             <div class="form-group">

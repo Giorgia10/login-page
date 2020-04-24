@@ -1,49 +1,53 @@
-const credential = {
-  email: "eve.holt@reqres.in",
-  password: "abcd1234",
-};
-  
-function validateForm() {
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
+function signIn() {
+  var email = document.getElementById('email').value;
+  var pw = document.getElementById('password').value;
 
-  if (email == "" && password == "") {
+  //Check-out on email and password
+  if (email == "" && pw == "") {
     alert("Email e password obbligatori");
     return false;
-  } else {
-    http(email, password);
-  }
+  } 
 
-  if (password == "") {
-    alert("Inserisci la password");
-    return false;
-  } else {
-    http(password);
-    window.location.href="homepage.html";
-  }
-}
-
-function logout() {
-  localStorage.clear();
-  window.location.href="loginpage.html";
-}
-  
-  
-function http(email) {
-  fetch("https://reqres.in/api/login", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    email: email,
-    password: "abcd1234",
-  }),
-})
+  //Fetch method
+  fetch('https://reqres.in/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+        "email": email,
+        "password": pw
+      })})
   .then((response) => {
     return response.json();
   })
   .then((data) => {
-    console.log('token -> ',data.token);
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('email', email);
+      localStorage.setItem('password', pw);
+      window.location.href='homepage.html';
+    }
+    console.log(data);
   });
+}
+
+//Function that verify the token at the very first loading of the page
+function verifyToken() {
+  var token = localStorage.getItem("token");
+  var email = localStorage.getItem("email");
+  if (token != null) {
+    document.getElementById('email').innerHTML = email;
+    document.getElementById('token').innerHTML = token;
+  }else {
+    window.location.href='loginpage.html';
+  }
+}
+
+//Function that clears the localStorage and takes the user back to the login page
+function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("email");
+  localStorage.removeItem("password");
+  window.location.href='loginpage.html';
 }
